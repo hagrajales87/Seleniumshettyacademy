@@ -5,10 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.io.Files;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.pageObjects.LandingPage;
@@ -42,11 +44,22 @@ public class BaseTest {
         //        "src//main//java//resources//GlobalData//GlobalData.properties");
         FileInputStream file = new FileInputStream("src/main/java/resources/GlobalData/GlobalData.properties");
         prop.load(file);
-        String browserName = prop.getProperty("browser");
+        String browserName= System.getProperty("browser") != null ? System.getProperty("browser") : prop.getProperty("browser");
 
-        if(browserName.equalsIgnoreCase("chrome")){
+
+
+        if(browserName.contains("chrome")){
+            ChromeOptions options =  new ChromeOptions();
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            if(browserName.contains("headless")){
+                options.addArguments("headless");
+            }
+            driver = new ChromeDriver(options);
+            driver.manage().window().setSize(new Dimension(1440,900)); //Full Screen
+
+
+
+
         } else if (browserName.equalsIgnoreCase("firefox")) {
             //Firefox
             WebDriverManager.firefoxdriver().setup();
@@ -65,11 +78,11 @@ public class BaseTest {
     }
 
     @BeforeMethod(alwaysRun = true)
-    public void launchApplication() throws IOException {
+    public LandingPage launchApplication() throws IOException {
         driver = setUp();
         landingPage = new LandingPage(driver);
         landingPage.goTo();
-
+        return landingPage;
     }
 
     @AfterMethod(alwaysRun = true)
@@ -77,7 +90,7 @@ public class BaseTest {
         driver.close();
     }
 
-
+/*
     public String getScreenshot(ITestResult result){
         if(ITestResult.FAILURE == result.getStatus()){
             File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
@@ -92,6 +105,18 @@ public class BaseTest {
 
     }
 
+ */
+public String getScreenshot(String testCaseName, WebDriver driver){
+        File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+            File file = new File(System.getProperty("user.dir")+"\\reports\\"+testCaseName+".png");
+            Files.move(src, file);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    return  System.getProperty("user.dir")+"\\reports\\"+testCaseName+".png";
+
+}
     //Extent Reports
     public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException {
 

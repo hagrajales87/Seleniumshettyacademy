@@ -6,13 +6,14 @@ import org.pageObjects.ProductCatalogue;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import testComponents.BaseTest;
+import testComponents.Retry;
 
 import java.io.IOException;
 
 public class ErrorValidationTest extends BaseTest {
 
-    @Test(groups = "ErrorHandling")
-    public void submitOrder() throws IOException, InterruptedException
+    @Test(groups = "ErrorHandling", retryAnalyzer = Retry.class)
+    public void loginErrorValidation() throws IOException, InterruptedException
     {
         landingPage.setUserEmail("hagrajales87@gmail.com");
         landingPage.userPassword("Test123");
