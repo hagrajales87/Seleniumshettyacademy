@@ -1,8 +1,8 @@
-C:\curses\Seleniumshettyacademy\src\main\java\org\pageObjects\OrderPage.java
-C:\curses\Seleniumshettyacademy\src\main\java\org\pageObjects\ProductCatalogue.java
-C:\curses\Seleniumshettyacademy\src\main\java\org\pageObjects\ConfirmationPage.java
-C:\curses\Seleniumshettyacademy\src\main\java\resources\ExtentReporterNG.java
-C:\curses\Seleniumshettyacademy\src\main\java\org\pageObjects\CartPage.java
-C:\curses\Seleniumshettyacademy\src\main\java\org\pageObjects\CheckoutPage.java
-C:\curses\Seleniumshettyacademy\src\main\java\org\pageObjects\LandingPage.java
-C:\curses\Seleniumshettyacademy\src\main\java\abstractCompenent\AbstractComponent.java
+/Users/hectorgrajales/Curses/Selenium/BasicTest/Seleniumshettyacademy/src/main/java/org/pageObjects/CheckoutPage.java
+/Users/hectorgrajales/Curses/Selenium/BasicTest/Seleniumshettyacademy/src/main/java/org/pageObjects/CartPage.java
+/Users/hectorgrajales/Curses/Selenium/BasicTest/Seleniumshettyacademy/src/main/java/abstractCompenent/AbstractComponent.java
+/Users/hectorgrajales/Curses/Selenium/BasicTest/Seleniumshettyacademy/src/main/java/org/pageObjects/ProductCatalogue.java
+/Users/hectorgrajales/Curses/Selenium/BasicTest/Seleniumshettyacademy/src/main/java/resources/ExtentReporterNG.java
+/Users/hectorgrajales/Curses/Selenium/BasicTest/Seleniumshettyacademy/src/main/java/org/pageObjects/OrderPage.java
+/Users/hectorgrajales/Curses/Selenium/BasicTest/Seleniumshettyacademy/src/main/java/org/pageObjects/ConfirmationPage.java
+/Users/hectorgrajales/Curses/Selenium/BasicTest/Seleniumshettyacademy/src/main/java/org/pageObjects/LandingPage.java
